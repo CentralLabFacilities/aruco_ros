@@ -26,8 +26,11 @@ add_compile_options(-std=c++11)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES aruco_ros_utils
-  CATKIN_DEPENDS aruco sensor_msgs tf 
+#  CATKIN_DEPENDS aruco sensor_msgs tf 
+  CATKIN_DEPENDS sensor_msgs tf
 )
+
+find_package(aruco CONFIG REQUIRED)
 
 include_directories(
   include
@@ -40,17 +43,17 @@ target_link_libraries(aruco_ros_utils ${catkin_LIBRARIES})
 add_executable(single src/simple_single.cpp
                       src/aruco_ros_utils.cpp)
 add_dependencies(single ${PROJECT_NAME}_gencfg)
-target_link_libraries(single ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(single ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}  ${aruco_LIBS})
 
 add_executable(double src/simple_double.cpp
                       src/aruco_ros_utils.cpp)
 add_dependencies(double ${PROJECT_NAME}_gencfg)
-target_link_libraries(double ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(double ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${aruco_LIBS})
 
 add_executable(marker_publisher src/marker_publish.cpp
                                 src/aruco_ros_utils.cpp)
 add_dependencies(marker_publisher ${PROJECT_NAME}_gencfg)
-target_link_libraries(marker_publisher ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(marker_publisher ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}  ${aruco_LIBS})
 
 #############
 ## Install ##

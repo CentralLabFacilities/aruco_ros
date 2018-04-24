@@ -94,18 +94,7 @@ public:
       ROS_WARN("Corner refinement options have been removed in Aruco 3.0.0, corner_refinement ROS parameter is deprecated");
 
     aruco::MarkerDetector::Params params = mDetector.getParameters();
-    std::string thresh_method;
-    switch (params._thresMethod) {
-      case aruco::MarkerDetector::ThresMethod::THRES_ADAPTIVE:
-        thresh_method = "THRESH_ADAPTIVE";
-        break;
-      case aruco::MarkerDetector::ThresMethod::THRES_AUTO_FIXED:
-        thresh_method = "THRESH_AUTO_FIXED";
-        break;
-      default:
-        thresh_method = "UNKNOWN";
-        break;
-    }
+    std::string thresh_method = aruco::MarkerDetector::Params::toString(params.thresMethod);
 
     //Print parameters of aruco marker detector:
     ROS_INFO_STREAM("Threshold method: " << thresh_method);
