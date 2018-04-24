@@ -26,11 +26,10 @@ add_compile_options(-std=c++11)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES aruco_ros_utils
-#  CATKIN_DEPENDS aruco sensor_msgs tf 
   CATKIN_DEPENDS sensor_msgs tf
 )
 
-find_package(aruco CONFIG REQUIRED)
+find_package(aruco REQUIRED)
 
 include_directories(
   include
