@@ -11,7 +11,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   tf
-  aruco
   aruco_msgs
   sensor_msgs
   visualization_msgs
@@ -29,6 +28,7 @@ catkin_package(
   CATKIN_DEPENDS sensor_msgs tf
 )
 
+# use non catkin system install
 find_package(aruco REQUIRED)
 
 include_directories(
