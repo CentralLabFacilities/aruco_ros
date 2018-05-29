@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(aruco_ros)
 
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
